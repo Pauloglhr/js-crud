@@ -16,6 +16,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-family: var(--font-padrao);
 }
 
 body {
@@ -59,4 +60,35 @@ header button {
 header button:hover {
     background-color: var(--bg-button-hover);
     transition: ease-in-out .2s;
+}
+
+.container {
+    width: 90%;
+    background-color: var(--bg-color);
+    margin: 16px auto;
+    border-radius: 5px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.075);
+    text-align: center;
+}
+
+.container input {
+    margin: 16px 0;
+    border-radius: 5px;
+    border: 1px solid var(--bg-effects);
+    padding: 5px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.075);
+}
+
+.container table {
+    width: 100%;
+    padding: 10px;
+    border-spacing: 0px;
+}
+
+.container td {
+    border: 1px solid rgba(0, 0, 0, 0.255);
+    padding: 5px;
+    width: 10px;
+    margin-right: 2rem;
+    font-size: 0.7rem;
 }
