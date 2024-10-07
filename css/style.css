@@ -10,6 +10,8 @@
     --bg-button: #B0C6CE;
     --bg-button-hover: #919fa9;
     --bg-effects: #02182B;
+    --btn-cancelar: #f24254;
+    --btn-salvar: #2DD881;
 }
 
 *{
@@ -122,4 +124,69 @@ td {
 
 .form-acoes button:active {
     background-color: var(--bg-button-hover);
+}
+
+.formulario-container {
+    background-color: var(--bg-color);
+    box-shadow: 0px 0px 300px rgb(0, 0, 0);
+    width: 350px;
+    height: 500px;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0px auto;
+    position: absolute;
+    top: 10%;
+    left: 8%;
+}
+
+.formulario-container h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-family: var(--font-titulo);
+    font-weight: 200;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.293);
+    margin-bottom: 16px;
+}
+
+.formulario-container form {
+    display: flex;
+    height: 89%;
+    flex-direction: column;
+    text-align: center;
+}
+
+.formulario-container form > input {
+    width: 50%;
+    margin: 0px auto;
+    margin-bottom: 3rem;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.botoes-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.botoes-form button {
+    display: flex;
+    align-items: center;
+    border: none;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 16px 0;
+    cursor: pointer;
+    width: 80px;
+    font-weight: 600;
+}
+
+.botoes-form .btn-salvar {
+    background-color: var(--btn-salvar);
+}
+
+.botoes-form .btn-cancelar {
+    background-color: var(--btn-cancelar);
 }

@@ -1,3 +1,13 @@
+const openForm = () => {
+    document.querySelector('.formulario-container')
+        .hidden = false;
+}
+
+const closeForm = () => {
+    document.querySelector('.formulario-container')
+        .hidden = true;
+}
+
 const getLocalStorage = () => 
     JSON.parse(localStorage.getItem('db_client')) || [];
 const setLocalStorage = (client) => 
@@ -24,3 +34,5 @@ const createClient = (client) => {
     storage.push(client);
     setLocalStorage(storage);
 }
+
+//Eventos

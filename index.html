@@ -21,7 +21,7 @@
                 <i class="fa-brands fa-linkedin"></i>
                  Linkedin</a>
         </div>
-        <button class="cadastrar">
+        <button id="cadastrar" class="cadastrar">
             <i class="material-icons">person</i> | Novo cliente
         </button>
     </header>
@@ -74,6 +74,36 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="formulario-container" hidden>
+            <h2>Cadastro de usuário</h2>
+            <form>
+                <label for="nome">Nome:</label>
+                <input 
+                    type="text" 
+                    name="nome" 
+                    id="nome"
+                    placeholder="Digite um nome"
+                >
+                <label for="data">Data de nascimento:</label>
+                <input 
+                    type="date" 
+                    name="data" 
+                    id="data"
+                >
+                <label for="email">E-Mail:</label>
+                <input 
+                    type="email" 
+                    name="email" 
+                    id="email"
+                    placeholder="Digite um e-mail"
+                >
+
+                <div class="botoes-form">
+                    <button id="salvar" class="btn-salvar">Salvar</button>
+                    <button id="cancelar" class="btn-cancelar">Cancelar</button>
+                </div>
+            </form>
         </div>
     </body>
     <script src="src/script.js"></script>
