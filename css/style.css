@@ -11,6 +11,7 @@
     --bg-button-hover: #919fa9;
     --bg-effects: #02182B;
     --btn-cancelar: #f24254;
+    --btn-cancelar-hover: #c92737;
     --btn-salvar: #2DD881;
 }
 
@@ -62,10 +63,6 @@ header button {
 header button:hover {
     background-color: var(--bg-button-hover);
     transition: ease-in-out .2s;
-}
-
-td {
-    
 }
 
 .container {
@@ -137,6 +134,25 @@ td {
     position: absolute;
     top: 10%;
     left: 8%;
+}
+
+.formulario-cabecalho {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.formulario-cabecalho i {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--btn-cancelar);
+    text-align: center;
+    cursor: pointer;
+}
+
+.formulario-cabecalho i:hover {
+    background-color: var(--btn-cancelar-hover);
 }
 
 .formulario-container h2 {
