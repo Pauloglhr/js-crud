@@ -92,7 +92,7 @@ header button:hover {
     border: 1px solid rgba(0, 0, 0, 0.255);
     padding: 5px;
     margin-right: 2rem;
-    font-size: 0.7rem;
+    font-size: .75rem;
     word-wrap: break-word;
     word-break: break-all;
     width: 26ch;
@@ -127,7 +127,7 @@ header button:hover {
     background-color: var(--bg-color);
     box-shadow: 0px 0px 300px rgb(0, 0, 0);
     width: 350px;
-    height: 500px;
+    height: 450px;
     padding: 10px;
     border-radius: 10px;
     margin: 0px auto;
@@ -140,11 +140,11 @@ header button:hover {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: start;
+    align-items: flex-start;
 }
 
 .formulario-cabecalho i {
-    padding: 5px;
+    padding: 7px;
     border-radius: 5px;
     background-color: var(--btn-cancelar);
     text-align: center;
@@ -186,17 +186,12 @@ header button:hover {
     gap: 2rem;
 }
 
-.botoes-form button {
-    display: flex;
-    align-items: center;
+.botoes-form input.btn-form {
+    padding: 7px;
     border: none;
-    justify-content: center;
-    padding: 10px;
     border-radius: 5px;
-    margin: 16px 0;
     cursor: pointer;
-    width: 80px;
-    font-weight: 600;
+    font-size: 1rem;
 }
 
 .botoes-form .btn-salvar {

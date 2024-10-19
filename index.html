@@ -87,19 +87,21 @@
                     onclick="closeForm()"
                 ></i>
             </div>
-            <form>
+            <form id="formulario">
                 <label for="nome">Nome:</label>
                 <input 
                     type="text" 
                     name="nome" 
                     id="nome"
                     placeholder="Digite um nome"
+                    required
                 >
                 <label for="data">Data de nascimento:</label>
                 <input 
                     type="date" 
                     name="data" 
                     id="data"
+                    required
                 >
                 <label for="email">E-Mail:</label>
                 <input 
@@ -107,11 +109,20 @@
                     name="email" 
                     id="email"
                     placeholder="Digite um e-mail"
+                    required
                 >
 
                 <div class="botoes-form">
-                    <button id="salvar" class="btn-salvar">Salvar</button>
-                    <button id="cancelar" class="btn-cancelar">Cancelar</button>
+                    <input 
+                        type="button" 
+                        id="salvar" 
+                        class="btn-form btn-salvar"
+                        value="Salvar">
+                    <input 
+                        type="button" 
+                        id="cancelar" 
+                        class="btn-form btn-cancelar"
+                        value="Cancelar">
                 </div>
             </form>
         </div>
