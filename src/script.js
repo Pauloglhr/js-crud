@@ -48,15 +48,15 @@ const formatDate = (client) => {
 }
 
 const saveClient = () => {
-    const client = {
-        nome: document.querySelector('#nome').value,
-        data: document.querySelector('#data').value,
-        email: document.querySelector('#email').value
-    }
-
-    formatDate(client)
     
     if(validityForm()) {
+        const client = {
+            nome: document.querySelector('#nome').value,
+            data: document.querySelector('#data').value,
+            email: document.querySelector('#email').value
+        }
+    
+        formatDate(client)
         createClient(client)
         updateTable()
         closeForm()
@@ -70,15 +70,15 @@ const updateTable = () => {
 
     table.innerHTML = '';
 
-    storage.forEach(client => {
+    storage.forEach((client, index) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
         <td>${client.nome}</td>
         <td>${client.data}</td>
         <td>${client.email}</td>
         <td class="form-acoes">
-            <button><i class="fa-solid fa-pen"></i></button>
-            <button><i class="fa-solid fa-trash"></i></button>
+            <button type="button" id="editar-${index}" class="btn-editar"></button>
+            <button type="button" id="excluir-${index}" class="btn-excluir"></button>
         </td>
         `;
         table.appendChild(tr);
@@ -92,9 +92,32 @@ const resetForm = () => {
     return form.reset()
 }
 
+//criar lógica de edição do cliente, de forma que os dados sejam puxados para o modal quando aberto.
+
+const editarOuExcluir = (event) => {
+    if(event.target.type == 'button'){
+        const [action, index] = event.target.id.split('-')
+        
+        if(action == 'editar'){
+            editClient(index)
+        } else {
+            const client = readStorage()[index]
+            const del = confirm(`Você deseja excluir o usuário ${client.nome}?`)
+            if(del){
+                deleteClient(index)
+                updateTable()
+            }
+        }
+    }
+}
+
 //Eventos
 
 document.querySelector('#salvar')
     .addEventListener('click', saveClient)
+
 document.querySelector('#cancelar')
     .addEventListener('click', closeForm)
+
+document.querySelector('.tabela > tbody')
+    .addEventListener('click', editarOuExcluir)

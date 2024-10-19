@@ -113,10 +113,27 @@ header button:hover {
 
 .form-acoes button {
     width: 25%;
+    padding: 10px;
     margin: 0 5px;
     border: 1px solid rgba(0, 0, 0, 0.149);
     border-radius: 5px;
     background-color: var(--bg-color);
+}
+
+.form-acoes .btn-editar {
+    background-image: url(../assets/edit-icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: var(--btn-salvar);
+}
+
+.form-acoes .btn-excluir {
+    background-image: url(../assets/dele-icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: var(--btn-cancelar);
 }
 
 .form-acoes button:active {
