@@ -1,6 +1,16 @@
 const openForm = () => {
     document.querySelector('.formulario-container')
         .hidden = false;
+    setData()
+}
+
+//Função responsável por aplicar um data-set, diferenciando o formulário para salvar ou editar cliente.
+const setData = () => {
+    document.querySelector('#cadastrar')
+        .addEventListener('click', (e)=>{
+            e.preventDefault;
+            document.querySelector('#nome').dataset.save = 'save'
+        })
 }
 
 const closeForm = () => {
@@ -55,11 +65,21 @@ const saveClient = () => {
             data: document.querySelector('#data').value,
             email: document.querySelector('#email').value
         }
+
+        const dataSet = document.querySelector('#nome').dataset.save;
+
+        if(dataSet === 'save'){
+            formatDate(client)
+            createClient(client)
+            updateTable()
+            closeForm()
+        } else {
+            formatDate(client)
+            updateClient(client, dataSet)
+            updateTable()
+            closeForm()
+        }
     
-        formatDate(client)
-        createClient(client)
-        updateTable()
-        closeForm()
     }
 
 }
@@ -92,7 +112,27 @@ const resetForm = () => {
     return form.reset()
 }
 
+const reverseDate = (client) => {
+    const dataArr = client.data.split('/')
+    return client.data = `${dataArr[2]}-${dataArr[1]}-${dataArr[0]}`
+}
+
+const fillFields = (client) => {
+    document.querySelector('#nome').value = client.nome
+    reverseDate(client) //Formata a data para o padrão do localStorage.
+    document.querySelector('#data').value = client.data
+    document.querySelector('#email').value = client.email
+    document.querySelector('#nome').dataset.save = client.index
+}
+
 //criar lógica de edição do cliente, de forma que os dados sejam puxados para o modal quando aberto.
+const editClient = (index) => {
+    const client = readStorage()[index]
+    client.index = index
+    fillFields(client)
+    openForm()
+}
+
 
 const editarOuExcluir = (event) => {
     if(event.target.type == 'button'){
