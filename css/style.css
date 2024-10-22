@@ -143,14 +143,15 @@ header button:hover {
 .formulario-container {
     background-color: var(--bg-color);
     box-shadow: 0px 0px 300px rgb(0, 0, 0);
-    width: 350px;
-    height: 450px;
+    width: 85%;
+    height: 500px;
     padding: 10px;
     border-radius: 10px;
     margin: 0px auto;
     position: absolute;
-    top: 10%;
-    left: 8%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .formulario-cabecalho {
@@ -217,4 +218,11 @@ header button:hover {
 
 .botoes-form .btn-cancelar {
     background-color: var(--btn-cancelar);
+}
+
+@media (min-width: 724px) {
+    .formulario-container {
+        width: 613px;
+        position: absolute;
+    }
 }
