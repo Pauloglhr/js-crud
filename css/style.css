@@ -161,6 +161,11 @@ header button:hover {
     align-items: flex-start;
 }
 
+.formulario-cabecalho > h2 {
+    text-align: center;
+    width: 100%;
+}
+
 .formulario-cabecalho i {
     padding: 7px;
     border-radius: 5px;
@@ -224,5 +229,10 @@ header button:hover {
     .formulario-container {
         width: 613px;
         position: absolute;
+    }
+
+    .formulario-cabecalho > h2 {
+        text-align: center;
+        width: 100%;
     }
 }
