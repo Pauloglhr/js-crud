@@ -1,5 +1,5 @@
 const openForm = () => {
-    document.querySelector('.formulario-container')
+    document.querySelector('.modal')
         .hidden = false;
     setData()
 }
@@ -14,7 +14,7 @@ const setData = () => {
 }
 
 const closeForm = () => {
-    document.querySelector('.formulario-container')
+    document.querySelector('.modal')
         .hidden = true;
     resetForm();
 }

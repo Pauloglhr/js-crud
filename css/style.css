@@ -140,22 +140,45 @@ header button:hover {
     background-color: var(--bg-button-hover);
 }
 
-.formulario-container {
-    background-color: var(--bg-color);
-    box-shadow: 0px 0px 300px rgb(0, 0, 0);
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal form {
     width: 85%;
     height: 500px;
     padding: 10px;
     border-radius: 10px;
     margin: 0px auto;
+    background-color: var(--bg-color);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.modal form > input {
+    width: 50%;
+    margin: 0px auto;
+    margin-bottom: 1rem;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .formulario-cabecalho {
     display: flex;
+    width: 100%;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
@@ -164,6 +187,11 @@ header button:hover {
 .formulario-cabecalho > h2 {
     text-align: center;
     width: 100%;
+    font-family: var(--font-titulo);
+    font-weight: 200;
+    font-size: 2rem;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.215);
+    margin-bottom: 14px;
 }
 
 .formulario-cabecalho i {
@@ -176,30 +204,6 @@ header button:hover {
 
 .formulario-cabecalho i:hover {
     background-color: var(--btn-cancelar-hover);
-}
-
-.formulario-container h2 {
-    text-align: center;
-    font-size: 2rem;
-    font-family: var(--font-titulo);
-    font-weight: 200;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.293);
-    margin-bottom: 16px;
-}
-
-.formulario-container form {
-    display: flex;
-    height: 89%;
-    flex-direction: column;
-    text-align: center;
-}
-
-.formulario-container form > input {
-    width: 50%;
-    margin: 0px auto;
-    margin-bottom: 3rem;
-    border-radius: 5px;
-    padding: 5px;
 }
 
 .botoes-form {
@@ -226,7 +230,7 @@ header button:hover {
 }
 
 @media (min-width: 724px) {
-    .formulario-container {
+    #formulario {
         width: 613px;
         position: absolute;
     }
