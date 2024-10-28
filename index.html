@@ -30,6 +30,7 @@
         </button>
     </header>
     <body>
+        <!-- pattern="[a-zA-Zà-üÀ-Ü\s]+$" -->
         <div class="container">
             <div class="pesquisar">
                 <input 
@@ -67,7 +68,7 @@
                     data-save="save"
                     id="nome"
                     minlength="3"
-                    pattern="[a-zA-Zà-üÀ-Ü\s]+"
+                    pattern="^[a-zA-Zà-üÀ-Ü]+(?:\s+[a-zA-Zà-üÀ-Ü]+)*$"
                     placeholder="Digite um nome"
                     required
                 >
