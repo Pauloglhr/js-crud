@@ -57,6 +57,19 @@ const formatDate = (client) => {
     return client.data = dataFormatada
 }
 
+const validDate = (client) => {
+    const dataAtual = new Date()
+    const anoAtual = dataAtual.getFullYear()
+    const dataArr = client.data.split('-')
+    const anoClient = parseInt(dataArr[0])
+
+    if(anoClient > anoAtual){
+        return false
+    } else { 
+        return true
+    }
+}
+
 const saveClient = () => {
     
     if(validityForm()) {
@@ -69,15 +82,19 @@ const saveClient = () => {
         const dataSet = document.querySelector('#nome').dataset.save;
 
         if(dataSet === 'save'){
-            formatDate(client)
-            createClient(client)
-            updateTable()
-            closeForm()
+            if(validDate(client)){
+                formatDate(client)
+                createClient(client)
+                updateTable()
+                closeForm()
+            }
         } else {
-            formatDate(client)
-            updateClient(client, dataSet)
-            updateTable()
-            closeForm()
+            if(validDate(client)){
+                formatDate(client)
+                updateClient(client, dataSet)
+                updateTable()
+                closeForm()
+            }
         }
     
     }
@@ -125,7 +142,6 @@ const fillFields = (client) => {
     document.querySelector('#nome').dataset.save = client.index
 }
 
-//criar lógica de edição do cliente, de forma que os dados sejam puxados para o modal quando aberto.
 const editClient = (index) => {
     const client = readStorage()[index]
     client.index = index
