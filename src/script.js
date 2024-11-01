@@ -58,17 +58,20 @@ const formatDate = (client) => {
 }
 
 const validDate = (client) => {
-    const dataAtual = new Date()
-    const anoAtual = dataAtual.getFullYear()
-    const dataArr = client.data.split('-')
-    const anoClient = parseInt(dataArr[0])
-
-    if(anoClient > anoAtual){
-        return false
-    } else { 
-        return true
+    const dataAtual = new Date();
+    const dataArr = client.data.split('-');
+    const anoClient = parseInt(dataArr[0]);
+    const mesClient = parseInt(dataArr[1]) - 1; // Meses em JavaScript começam em 0
+    const diaClient = parseInt(dataArr[2]);
+  
+    const dataCliente = new Date(anoClient, mesClient, diaClient);
+  
+    if (dataCliente >= dataAtual) {
+      return false;
+    } else {
+      return true;
     }
-}
+  };
 
 const saveClient = () => {
     
