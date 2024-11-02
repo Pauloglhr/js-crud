@@ -67,7 +67,13 @@ const validDate = (client) => {
     const dataCliente = new Date(anoClient, mesClient, diaClient);
   
     if (dataCliente >= dataAtual) {
-      return false;
+        //Utilização da biblioteca sweet alert
+        Swal.fire({
+            title: 'Erro!',
+            text: 'A data de nascimento não pode ser maior que a data atual.',
+            icon: 'error',
+            confirmButtonText: 'Confirmar'
+          })
     } else {
       return true;
     }
