@@ -83,6 +83,7 @@ const saveClient = () => {
     
     if(validityForm()) {
         const client = {
+            id: readStorage().length + 1,
             nome: document.querySelector('#nome').value,
             data: document.querySelector('#data').value,
             email: document.querySelector('#email').value
@@ -94,14 +95,14 @@ const saveClient = () => {
             if(validDate(client)){
                 formatDate(client)
                 createClient(client)
-                updateTable()
+                updateTable(readStorage())
                 closeForm()
             }
         } else {
             if(validDate(client)){
                 formatDate(client)
                 updateClient(client, dataSet)
-                updateTable()
+                updateTable(readStorage())
                 closeForm()
             }
         }
@@ -110,9 +111,8 @@ const saveClient = () => {
 
 }
 
-const updateTable = () => {
+const updateTable = (storage) => {
     const table = document.querySelector('.tabela tbody');
-    const storage = readStorage();
 
     table.innerHTML = '';
 
@@ -131,7 +131,7 @@ const updateTable = () => {
     });
 }
 
-updateTable()
+updateTable(readStorage())
 
 const resetForm = () => {
     const form = document.querySelector('#formulario')
@@ -170,11 +170,22 @@ const editarOuExcluir = (event) => {
             const del = confirm(`Você deseja excluir o usuário ${client.nome}?`)
             if(del){
                 deleteClient(index)
-                updateTable()
+                updateTable(readStorage())
             }
         }
     }
 }
+
+const filtrarClient = () => {
+    const storage = readStorage()
+    const str = document.querySelector('#filtro').value;
+    const strLowerCase = str.toLowerCase()
+
+    const clientsFiltrados = storage.filter((client) => 
+        client.nome.toLowerCase().includes(strLowerCase));
+
+    updateTable(clientsFiltrados);
+};
 
 //Eventos
 
