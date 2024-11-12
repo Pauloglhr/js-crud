@@ -116,15 +116,15 @@ const updateTable = (storage) => {
 
     table.innerHTML = '';
 
-    storage.forEach((client, index) => {
+    storage.forEach((client) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
         <td>${client.nome}</td>
         <td>${client.data}</td>
         <td>${client.email}</td>
         <td class="form-acoes">
-            <button type="button" id="editar-${index}" class="btn-editar"></button>
-            <button type="button" id="excluir-${index}" class="btn-excluir"></button>
+            <button type="button" id="editar-${client.id - 1}" class="btn-editar"></button>
+            <button type="button" id="excluir-${client.id - 1}" class="btn-excluir"></button>
         </td>
         `;
         table.appendChild(tr);
