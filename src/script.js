@@ -26,9 +26,9 @@ const setLocalStorage = (client) =>
 
 //CRUD
 
-const deleteClient = (index) => {
+const deleteClient = (id) => {
     const storage = readStorage();
-    storage.splice(index, 1);
+    storage.splice(id, 1);
     setLocalStorage(storage);
 }
 
@@ -80,10 +80,9 @@ const validDate = (client) => {
   };
 
 const saveClient = () => {
-    
     if(validityForm()) {
         const client = {
-            id: readStorage().length + 1,
+            id: 0,
             nome: document.querySelector('#nome').value,
             data: document.querySelector('#data').value,
             email: document.querySelector('#email').value
@@ -93,6 +92,7 @@ const saveClient = () => {
 
         if(dataSet === 'save'){
             if(validDate(client)){
+                client.id = readStorage().length;
                 formatDate(client)
                 createClient(client)
                 updateTable(readStorage())
@@ -100,6 +100,7 @@ const saveClient = () => {
             }
         } else {
             if(validDate(client)){
+                client.id = parseInt(dataSet);
                 formatDate(client)
                 updateClient(client, dataSet)
                 updateTable(readStorage())
@@ -123,8 +124,8 @@ const updateTable = (storage) => {
         <td>${client.data}</td>
         <td>${client.email}</td>
         <td class="form-acoes">
-            <button type="button" id="editar-${client.id - 1}" class="btn-editar"></button>
-            <button type="button" id="excluir-${client.id - 1}" class="btn-excluir"></button>
+            <button type="button" id="editar-${client.id}" class="btn-editar"></button>
+            <button type="button" id="excluir-${client.id}" class="btn-excluir"></button>
         </td>
         `;
         table.appendChild(tr);
@@ -148,16 +149,14 @@ const fillFields = (client) => {
     reverseDate(client) //Formata a data para o padrão do localStorage.
     document.querySelector('#data').value = client.data
     document.querySelector('#email').value = client.email
-    document.querySelector('#nome').dataset.save = client.index
+    document.querySelector('#nome').dataset.save = client.id
 }
 
 const editClient = (index) => {
     const client = readStorage()[index]
-    client.index = index
     fillFields(client)
     openForm()
 }
-
 
 const editarOuExcluir = (event) => {
     if(event.target.type == 'button'){
@@ -166,8 +165,9 @@ const editarOuExcluir = (event) => {
         if(action == 'editar'){
             editClient(index)
         } else {
-            const client = readStorage()[index]
-            const del = confirm(`Você deseja excluir o usuário ${client.nome}?`)
+            //O problema esta aqui, criar uma função para redefinir o id de todos os elementos quando algum client for excluido.
+            const client = readStorage()
+            const del = confirm(`Você deseja excluir o usuário ${client[index].nome}?`)
             if(del){
                 deleteClient(index)
                 updateTable(readStorage())
