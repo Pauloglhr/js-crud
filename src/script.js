@@ -29,6 +29,12 @@ const setLocalStorage = (client) =>
 const deleteClient = (id) => {
     const storage = readStorage();
     storage.splice(id, 1);
+    
+    let novoId = 0;
+    storage.map(client => {
+        client.id = novoId;
+        novoId++
+    })
     setLocalStorage(storage);
 }
 
@@ -107,7 +113,6 @@ const saveClient = () => {
                 closeForm()
             }
         }
-    
     }
 
 }
